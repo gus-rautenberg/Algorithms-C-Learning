@@ -2,28 +2,45 @@
 #include <string.h>
 int main()
 {
-    int D, N, i, l, aux;
-    char Contrato[100], certa[100];
-    int Credor, Devedor, valor;
+    int l;
+    char Contrato[1000];
+    char D;
 
-    scanf("%d", &D);
-    for(i=0; i<100; i++){
-
-    }
-    while(scanf("%d", &D) && D!='0') {
-        for(int j =0; j<100;j++){
-            scanf("%s", &Contrato[j]);
-        }
+    scanf("%c %s", &D, Contrato);
+    while(D !='0') {
         l = strlen(Contrato);
-        for(i=0; i<l;i++){
-            if(D != Contrato[i]){
-                 certa[i] = Contrato[i];
+        for(int i=0; i<l;i++){
+            if(D == Contrato[i]){
+                for (int j = i; j < l; j++){
+                    Contrato[j] = Contrato[j+1];
+                    Contrato[l-1] = 0;
+                    l--;
+                    i--;
+                }
             }
         }
-        aux = strlen(certa);
-        for(int k = 0; k<aux; k++){
-            printf("%s\n", certa[k]);
+        for (int i = 0; i < l-1; i++){
+            if (Contrato[i] == '0'){
+                for (int j = i; j < l; j++){
+                    Contrato[j] = Contrato[j+1];
+                    Contrato[l-1] = 0;
+                    l--;
+                    i--;
+                }
+            } else
+                break;
         }
+
+        if (l == 0){
+            Contrato[0] = '0';
+            Contrato[1] = '\0';
+        }
+
+        printf("%s\n", Contrato);
+
+
+        scanf("%c", &D);
+        scanf("%s", Contrato);
     }
 
     return 0;

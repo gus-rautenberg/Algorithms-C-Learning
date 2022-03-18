@@ -7,7 +7,8 @@ int main()
     int Fundo[20];
     int Credor, Devedor, valor;
 
-    while(scanf("%d%d", &B, &D) && B!='0' && D!='0') {
+    while(scanf("%d%d", &B, &D) && B && D) {
+        checar = 0;
         for(i = 1; i<=B; i++) {
             scanf("%d", &Fundo[i]);     
         }
@@ -20,8 +21,6 @@ int main()
         for(i = 1; i<=B; i++) {
             if(Fundo[i] < 0) {
                 checar = 1;
-            } else {
-                checar = 0;
             }
         }
         if(checar == 1) {
